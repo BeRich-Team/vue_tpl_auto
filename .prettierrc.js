@@ -6,5 +6,4 @@ module.exports = {
     endOfLine: 'lf', // lf-mac crlf-win
     // vueIndentScriptAndStyle: true,
     // parser: 'vue',
-    'brace-style': 'beside',
 }
