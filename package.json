@@ -27,6 +27,7 @@
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "lint-staged": "^9.5.0",
+    "prettier": "^2.0.5",
     "vue-template-compiler": "^2.6.11"
   },
   "gitHooks": {
@@ -35,6 +36,7 @@
   "lint-staged": {
     "*.{js,jsx,vue}": [
       "vue-cli-service lint",
+      "prettier --write",
       "git add"
     ]
   }
