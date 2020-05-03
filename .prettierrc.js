@@ -4,4 +4,5 @@ module.exports = {
     // "useTabs": true,
     tabWidth: 4,
     endOfLine: 'lf', // lf-mac crlf-win
+    // vueIndentScriptAndStyle: true,
 }
