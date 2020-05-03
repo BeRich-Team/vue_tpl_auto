@@ -5,4 +5,6 @@ module.exports = {
     tabWidth: 4,
     endOfLine: 'lf', // lf-mac crlf-win
     // vueIndentScriptAndStyle: true,
+    // parser: 'vue',
+    'brace-style': 'beside',
 }
