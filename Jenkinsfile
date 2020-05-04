@@ -43,7 +43,7 @@ pipeline {
                     echo "current branch: $BRANCH_NAME"
                     echo "BUILD_NUMBER: $BUILD_NUMBER"
                     echo "projectName: ${projectName}"
-                    if (BRANCH_NAME.equals("dev") || BRANCH_NAME.equals("master")) {
+                    if (BRANCH_NAME.equals("develop") || BRANCH_NAME.equals("master")) {
                         sshPublisher(
                             continueOnError: false, failOnError: true,
                             publishers: [
@@ -55,7 +55,7 @@ pipeline {
                                             sourceFiles: "./dist/", // dist 为构建结果文件夹
                                             removePrefix: "dist", // 部署后 URL path 不需要 ‘dist’ 路径因此去掉
                                             remoteDirectory: "/${projectName}/$BUILD_NUMBER",
-                                            execCommand: "cd /root/docker_home/jenkins_home/workspace/${projectName}_$BUILD_NUMBER && cp -r dist /www/wwwroot/rabbit/develop",
+                                            execCommand: "cd /root/docker_home/jenkins_home/workspace/${projectName}_$BUILD_NUMBER/* && cp -r dist /www/wwwroot/${projectName}/$BRANCH_NAME",
                                         )
                                     ]
                                 )
