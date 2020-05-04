@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <img alt="Vue logo" src="../../assets/images/logo.png" />
-        <HelloWorld msg="vue模板项目，不允许写任何业务，只谈架构" />
+        <HelloWorld msg="兔宝宝项目初始化，请开始你的表演" />
     </div>
 </template>
 
