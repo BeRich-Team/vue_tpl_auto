@@ -11,7 +11,7 @@ pipeline {
     tools { nodejs 'NodeJs_14_lts' }
     environment {
         // GIT_PROJECT_NAME = 'insurance-list-pages'
-        projectName = 'react_admin_demo'
+        projectName = 'rabbit'
     }
     stages {
         stage('Preparation') {
@@ -48,14 +48,14 @@ pipeline {
                             continueOnError: false, failOnError: true,
                             publishers: [
                                 sshPublisherDesc(
-                                    configName: "ssh_test",
+                                    configName: "ssh_server",
                                     verbose: true,
                                     transfers: [
                                         sshTransfer(
-                                            sourceFiles: "./build/", // dist 为构建结果文件夹
-                                            removePrefix: "build", // 部署后 URL path 不需要 ‘dist’ 路径因此去掉
+                                            sourceFiles: "./dist/", // dist 为构建结果文件夹
+                                            removePrefix: "dist", // 部署后 URL path 不需要 ‘dist’ 路径因此去掉
                                             remoteDirectory: "/${projectName}/$BUILD_NUMBER",
-                                            execCommand: "cd /Users/lk-mbp/Documents/git/study/self_admin_react && sh ./test.sh",
+                                            execCommand: "cd /root/docker_home/jenkins_home/workspace/${projectName}_$BUILD_NUMBER && cp -r dist /www/wwwroot/rabbit/develop",
                                         )
                                     ]
                                 )
