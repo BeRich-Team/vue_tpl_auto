@@ -46,7 +46,7 @@ pipeline {
                     echo "current branch: $BRANCH_NAME"
                     echo "BUILD_NUMBER: $BUILD_NUMBER"
                     echo "project_name: ${project_name}"
-                    if (BRANCH_NAME.equals("develop") || BRANCH_NAME.equals("master")) {
+                    if (Arrays.asList(['develop', 'master', 'dev-docker']).contains(BRANCH_NAME)) {
                         sshPublisher(
                             continueOnError: false, failOnError: true,
                             publishers: [
