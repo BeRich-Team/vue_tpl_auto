@@ -11,10 +11,7 @@ echo "project_name: $project_name"
 echo "branch_name: $branch_name"
 echo "target_dir: $target_dir"
 
-cd $target_dir
-pwd
-
-project_full_name = ${project_name}_${branch_name}
+project_full_name=${project_name}_${branch_name}
 docker=which docker
 
 ${docker} stop ${project_full_name} || true \
