@@ -1,9 +1,11 @@
 
-source_dir=$1
-project_name=$2
-branch_name=$3
-target_dir=$4
+source_dir=$1/dist
+build_dir=$2
+project_name=$3
+branch_name=$4
+target_dir=$5
 echo "source_dir: $source_dir"
+echo "build_dir: $build_dir"
 echo "project_name: $project_name"
 echo "branch_name: $branch_name"
 echo "target_dir: $target_dir"
