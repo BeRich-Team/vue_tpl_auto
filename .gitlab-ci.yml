@@ -1,0 +1,8 @@
+notify_jenkins:
+  stage: deploy
+  tags:
+    - curl
+  only:
+    - /(develop|master)/
+  script:
+    - curl -G "http://122.51.53.117:8090/jenkins/git/notifyCommit" --data-urlencode "url=$CI_REPOSITORY_URL" --data-urlencode "branches=$CI_COMMIT_REF_NAME"
