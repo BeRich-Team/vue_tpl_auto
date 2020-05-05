@@ -58,7 +58,7 @@ pipeline {
                                             removePrefix: "dist", // 部署后 URL path 不需要 ‘dist’ 路径因此去掉
                                             remoteDirectory: "${source_dir}/${project_name}_$BRANCH_NAME/dist",
                                             // execCommand: "cp -r /root/docker_home/jenkins_home/workspace/${project_name}_$BRANCH_NAME/dist/* /www/wwwroot/${project_name}/$BRANCH_NAME",
-                                            execCommand: "cd $source_dir && sh command_sh.sh $source_dir/${project_name}_$BRANCH_NAME/dist $project_name $BRANCH_NAME $target_dir",
+                                            execCommand: "cd $source_dir/${project_name}_$BRANCH_NAME && sh command_sh.sh $source_dir/${project_name}_$BRANCH_NAME/dist $project_name $BRANCH_NAME $target_dir",
                                         )
                                     ]
                                 )
