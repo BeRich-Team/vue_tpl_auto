@@ -1,7 +1,7 @@
 <template>
     <div class="hello">
         <h1>{{ msg }}</h1>
-        <p>test for push event</p>
+        <p>push event touched</p>
     </div>
 </template>
 
