@@ -12,7 +12,7 @@ pipeline {
     environment {
         // GIT_PROJECT_NAME = 'insurance-list-pages'
         project_name = 'rabbit'
-        source_dir = '/root/docker_home/jenkins_home/workspace/${project_name}_$BRANCH_NAME'
+        source_dir = '/root/docker_home/jenkins_home/workspace/$project_name_$BRANCH_NAME'
         target_dir = '/www/wwwroot'
     }
     stages {
