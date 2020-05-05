@@ -12,6 +12,8 @@ pipeline {
     environment {
         // GIT_PROJECT_NAME = 'insurance-list-pages'
         project_name = 'rabbit'
+        source_dir = '/root/docker_home/jenkins_home/workspace/${project_name}_$BRANCH_NAME'
+        target_dir = '/www/wwwroot'
     }
     stages {
         stage('Preparation') {
@@ -52,11 +54,11 @@ pipeline {
                                     verbose: true,
                                     transfers: [
                                         sshTransfer(
-                                            sourceFiles: "dist/**/*", // dist 为构建结果文件夹
+                                            sourceFiles: "${source_dir}/dist/**/*", // dist 为构建结果文件夹
                                             removePrefix: "dist", // 部署后 URL path 不需要 ‘dist’ 路径因此去掉
-                                            remoteDirectory: "/${project_name}/$BRANCH_NAME",
+                                            remoteDirectory: "${source_dir}/dist",
                                             // execCommand: "cp -r /root/docker_home/jenkins_home/workspace/${project_name}_$BRANCH_NAME/dist/* /www/wwwroot/${project_name}/$BRANCH_NAME",
-                                            execCommand: "cd /root/docker_home/jenkins_home/workspace/${project_name}_$BRANCH_NAME && sh command_sh.sh",
+                                            execCommand: "cd $source_dir && sh command_sh.sh $source_dir/dist $project_name $BRANCH_NAME $target_dir",
                                         )
                                     ]
                                 )
