@@ -11,7 +11,7 @@ pipeline {
     tools { nodejs 'NodeJs_14_lts' }
     environment {
         // GIT_PROJECT_NAME = 'insurance-list-pages'
-        projectName = 'rabbit'
+        project_name = 'rabbit'
     }
     stages {
         stage('Preparation') {
@@ -42,7 +42,7 @@ pipeline {
                 script {
                     echo "current branch: $BRANCH_NAME"
                     echo "BUILD_NUMBER: $BUILD_NUMBER"
-                    echo "projectName: ${projectName}"
+                    echo "project_name: ${project_name}"
                     if (BRANCH_NAME.equals("develop") || BRANCH_NAME.equals("master")) {
                         sshPublisher(
                             continueOnError: false, failOnError: true,
@@ -52,10 +52,11 @@ pipeline {
                                     verbose: true,
                                     transfers: [
                                         sshTransfer(
-                                            sourceFiles: "./dist/", // dist 为构建结果文件夹
+                                            sourceFiles: "dist/**/*", // dist 为构建结果文件夹
                                             removePrefix: "dist", // 部署后 URL path 不需要 ‘dist’ 路径因此去掉
-                                            remoteDirectory: "/${projectName}/$BRANCH_NAME",
-                                            execCommand: "cp -r /root/docker_home/jenkins_home/workspace/${projectName}_$BRANCH_NAME/dist/* /www/wwwroot/${projectName}/$BRANCH_NAME",
+                                            remoteDirectory: "/${project_name}/$BRANCH_NAME",
+                                            // execCommand: "cp -r /root/docker_home/jenkins_home/workspace/${project_name}_$BRANCH_NAME/dist/* /www/wwwroot/${project_name}/$BRANCH_NAME",
+                                            execCommand: "sh command_sh.sh",
                                         )
                                     ]
                                 )
