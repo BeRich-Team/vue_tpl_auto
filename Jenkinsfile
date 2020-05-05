@@ -63,7 +63,7 @@ pipeline {
                                             // 原始方法提取
                                             // execCommand: "cd $source_dir/${project_name}_$BRANCH_NAME && sh command_sh.sh $source_dir/${project_name}_$BRANCH_NAME $build_dir $project_name $BRANCH_NAME $target_dir",
                                             // docker
-                                            execCommand: "cd $source_dir/${project_name}_$BRANCH_NAME && sh command_sh.sh $source_dir/${project_name}_$BRANCH_NAME $build_dir $project_name $BRANCH_NAME $target_dir",
+                                            execCommand: "cd $source_dir/${project_name}_$BRANCH_NAME && sh command_docker.sh",
                                         )
                                     ]
                                 )
